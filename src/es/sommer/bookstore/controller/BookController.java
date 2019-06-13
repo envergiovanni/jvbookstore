@@ -14,10 +14,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import es.sommer.bookstore.dao.BookDAO;
-import es.sommer.bookstore.dao.BookDAOImpl;
-import es.sommer.bookstore.model.Book;
-import es.sommer.bookstore.model.Category;
+import es.sommer.bookstore.model.dao.BookDAO;
+import es.sommer.bookstore.model.dao.BookDAOImpl;
+import es.sommer.bookstore.model.entity.Book;
+import es.sommer.bookstore.model.entity.Category;
 
 @WebServlet("/books")
 public class BookController extends HttpServlet {
@@ -28,7 +28,7 @@ public class BookController extends HttpServlet {
 	
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
-		BookDAOImpl bookDAO = new BookDAOImpl();
+		BookDAO bookDAO = new BookDAOImpl();
 		List<Category> categoryList = bookDAO.findAllCategories();
 		ServletContext context = config.getServletContext();
 		context.setAttribute("categoryList", categoryList);
@@ -40,8 +40,8 @@ public class BookController extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String base = "/pages/";
-		String url = base + "home.jsp";
+		String base = "/views/";
+		String url = "/home.jsp";
 		findAllBooks(request, response);
 		
 		String action = request.getParameter("action");
@@ -73,7 +73,7 @@ public class BookController extends HttpServlet {
 	private void findAllBooks(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
-			BookDAOImpl bookDAO = new BookDAOImpl();
+			BookDAO bookDAO = new BookDAOImpl();
 			List<Book> bookList = bookDAO.findAllBooks();
 			request.setAttribute("bookList", bookList);
 		} catch (Exception ex) {
@@ -83,16 +83,12 @@ public class BookController extends HttpServlet {
 	
 	private void searchBooks(HttpServletRequest request, HttpServletResponse response, String keyword) throws ServletException, IOException {
 		try {
-			BookDAOImpl bookDAO = new BookDAOImpl();
+			BookDAO bookDAO = new BookDAOImpl();
 			List<Book> bookList = bookDAO.searchBooksByKeyword(keyword);
 			request.setAttribute("bookList", bookList);
 		} catch (Exception ex) {
 			System.out.println(ex);
 		}
 	}
-	
-	protected String getContextParameter(String name) {
-	    return getServletContext().getInitParameter(name);
-	}
-	
+		
 }

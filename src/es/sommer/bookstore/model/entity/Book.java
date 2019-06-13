@@ -1,4 +1,4 @@
-package es.sommer.bookstore.model;
+package es.sommer.bookstore.model.entity;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ public class Book {
 	private Long categoryId;
 	private String bookTitle;
 	private List<Author> authors;
-	private String imagepath;
+	private String imagename;
 	
 	public Book() {
 	}
@@ -52,12 +52,12 @@ public class Book {
 		this.authors = authors;
 	}
 	
-	public String getImagepath() {
-		return imagepath;
+	public String getImagename() {
+		return imagename;
 	}
 
-	public void setImagepath(String imagepath) {
-		this.imagepath = imagepath;
+	public void setImagename(String imagename) {
+		this.imagename = imagename;
 	}
 
 	@Override

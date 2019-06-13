@@ -1,4 +1,4 @@
-package es.sommer.bookstore.model;
+package es.sommer.bookstore.model.entity;
 
 public class Category {
 

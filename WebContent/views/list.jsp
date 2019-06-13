@@ -2,8 +2,8 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.Iterator"%>
-<%@ page import="es.sommer.bookstore.model.Book"%>
-<%@ page import="es.sommer.bookstore.model.Author"%>
+<%@ page import="es.sommer.bookstore.model.entity.Book"%>
+<%@ page import="es.sommer.bookstore.model.entity.Author"%>
 
 	<%
 		String category = request.getParameter("category");

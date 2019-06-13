@@ -1,7 +1,6 @@
-package es.sommer.bookstore.dao;
+package es.sommer.bookstore.model.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,10 +8,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import es.sommer.bookstore.model.Author;
-import es.sommer.bookstore.model.Book;
-import es.sommer.bookstore.model.Category;
-import es.sommer.bookstore.model.DatabaseConnection;
+import es.sommer.bookstore.model.entity.Author;
+import es.sommer.bookstore.model.entity.Book;
+import es.sommer.bookstore.model.entity.Category;
+import es.sommer.bookstore.model.entity.DatabaseConnection;
 
 public class BookDAOImpl implements BookDAO {
 			
@@ -38,7 +37,7 @@ public class BookDAOImpl implements BookDAO {
 				book.setId(rs.getLong("id"));
 				book.setBookTitle(rs.getString("book_title"));
 				book.setCategoryId(rs.getLong("category_id"));
-				book.setImagepath(rs.getString("imagepath"));
+				book.setImagename(rs.getString("imagepath"));
 				author.setBookId(rs.getLong("book_id"));
 				author.setFirstName(rs.getString("first_name"));
 				author.setLastName(rs.getString("last_name"));
