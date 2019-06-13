@@ -6,13 +6,13 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.Iterator"%>
-<%@ page import="es.sommer.bookstore.model.Book"%>
+<%@ page import="es.sommer.bookstore.model.entity.Book"%>
 
-<jsp:include page="header.jsp" flush="true" />
+<jsp:include page="views/partials/header.jsp" flush="true" />
 	<div class="container">
 		<p></p>
 		<div class="row">		
-			<jsp:include page="leftColumn.jsp" flush="true" />
+			<jsp:include page="views/partials/leftColumn.jsp" flush="true" />
 			<div class="col-md-10">
 				<div class="card">
 					<h5 class="card-header">Featured Books</h5>
@@ -27,7 +27,7 @@
 				  		%>
 						<div class="col-md-2">
 							<div class="card">
-							  <img src="<%=imageURL%>/<%= book.getImagepath() %>" class="card-img-top" alt="...">
+							  <img src="<%=imageURL%>/<%= book.getImagename() %>" class="card-img-top" alt="...">
 							  <div class="card-body">
 							    <h6 class="card-title"><%= book.getBookTitle() %></h6>
 							  </div>
@@ -43,5 +43,5 @@
 		</div>	
 		
 	</div>
-<jsp:include page="footer.jsp" flush="true" />
+<jsp:include page="views/partials/footer.jsp" flush="true" />
 	
